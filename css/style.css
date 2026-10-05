@@ -940,3 +940,6 @@ html { scrollbar-color: var(--black-4) var(--black); }
   .wa-pick__card { width: 100%; border-radius: 22px 22px 0 0; padding-bottom: calc(22px + env(safe-area-inset-bottom)); transform: translateY(100%); }
   .wa-pick__card::before { border-radius: 22px 22px 0 0; }
 }
+.hero__badge .dot.sand { background: var(--sand); color: rgba(230,201,162,.7); animation-delay: .5s; }
+.hero__badge { white-space: nowrap; }
+@media (max-width: 640px) { .hero__badge { gap: 7px; padding: 8px 14px; letter-spacing: .08em; font-size: .7rem; } }

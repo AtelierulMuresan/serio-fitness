@@ -132,14 +132,14 @@
   var amounts = document.querySelectorAll('.price-row__amount');
   function countUp(node) {
     var original = node.textContent;
-    var m = original.match(/^(\D*)(\d+)(.*)$/);
+    var m = original.match(/^(\D*)([\d.]+)(.*)$/);
     if (!m || reduceMotion) return;
-    var target = parseInt(m[2], 10), start = null, dur = 1100;
+    var target = parseInt(m[2].replace(/\./g, ''), 10), start = null, dur = 1100;
     function step(t) {
       if (!start) start = t;
       var k = Math.min((t - start) / dur, 1);
       var eased = 1 - Math.pow(1 - k, 3);
-      node.textContent = m[1] + Math.round(target * eased) + m[3];
+      node.textContent = m[1] + Math.round(target * eased).toLocaleString('ro-RO') + m[3];
       if (k < 1) requestAnimationFrame(step); else node.textContent = original;
     }
     requestAnimationFrame(step);
@@ -152,6 +152,22 @@
     }, { threshold: 0.6 });
     amounts.forEach(function (a) { cio.observe(a); });
   }
+
+  /* ---------- Pilates tabs: Grup / Privat 1:1 ---------- */
+  document.querySelectorAll('.seg').forEach(function (seg) {
+    var btns = seg.querySelectorAll('.seg__btn');
+    btns.forEach(function (btn, i) {
+      btn.addEventListener('click', function () {
+        seg.classList.toggle('is-right', i === 1);
+        btns.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-selected', on);
+          document.getElementById(b.dataset.tab).hidden = !on;
+        });
+      });
+    });
+  });
 
   /* ---------- Lightbox for photos ---------- */
   var lb = el('div', 'lightbox', '<button class="lightbox__close" type="button" aria-label="Închide">&times;</button><img alt="">');

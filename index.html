@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="images/SimbolInchis.png">
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
@@ -229,17 +229,21 @@
       <!-- Fitness prices -->
       <div class="price-card price-card--fitness reveal">
         <div class="price-card__head">
-          <span class="price-card__icon"><i class="fa fa-heartbeat"></i></span>
-          <h3>Fitness</h3>
+          <span class="price-card__icon"><img src="images/icon-fitness.png" alt=""></span>
+          <h3>Abonamente Fitness</h3>
         </div>
-        <p class="price-card__sub">Antrenamente de forță și condiționare</p>
+        <p class="price-card__sub">Alege abonamentul potrivit pentru obiectivele tale.</p>
         <div class="price-row">
-          <div class="price-row__info"><h4>Abonament 8 ședințe</h4><p>2 ședințe / săptămână</p></div>
-          <div class="price-row__amount">400 RON</div>
-        </div>
-        <div class="price-row">
-          <div class="price-row__info"><h4>Abonament 12 ședințe</h4><p>3 ședințe / săptămână</p></div>
+          <div class="price-row__info"><h4>Abonament 8 ședințe</h4><p><i class="fa fa-calendar"></i> Valabilitate 30 zile</p></div>
           <div class="price-row__amount">500 RON</div>
+        </div>
+        <div class="price-row">
+          <div class="price-row__info"><h4>Abonament 12 ședințe</h4><p><i class="fa fa-calendar"></i> Valabilitate 30 zile</p></div>
+          <div class="price-row__amount">600 RON</div>
+        </div>
+        <div class="price-row price-row--new">
+          <div class="price-row__info"><h4>Prelungire valabilitate <span class="tag-new">Nou</span></h4><p>Dacă dorești mai multă flexibilitate: valabilitate extinsă până la 90 zile</p></div>
+          <div class="price-row__amount">+75 RON</div>
         </div>
         <div class="price-row">
           <div class="price-row__info"><h4>Plan de nutriție personalizat</h4><p>Un plan adaptat obiectivelor tale</p></div>
@@ -255,33 +259,88 @@
       <!-- Pilates prices -->
       <div class="price-card price-card--pilates reveal d1">
         <div class="price-card__head">
-          <span class="price-card__icon"><i class="fa fa-leaf"></i></span>
+          <span class="price-card__icon"><img src="images/icon-pilates.png" alt=""></span>
           <h3>Pilates Reformer</h3>
         </div>
         <p class="price-card__sub">Ședințe de grup sau private 1 la 1</p>
-        <div class="price-row">
-          <div class="price-row__info"><h4>1 ședință</h4><p>Ședință individuală</p></div>
-          <div class="price-row__amount">150 RON</div>
+        <div class="seg" role="tablist" aria-label="Tip ședință Pilates">
+          <button class="seg__btn active" type="button" role="tab" aria-selected="true" data-tab="pil-grup">Grup</button>
+          <button class="seg__btn" type="button" role="tab" aria-selected="false" data-tab="pil-privat">Privat 1:1</button>
+          <span class="seg__thumb" aria-hidden="true"></span>
         </div>
-        <div class="price-row">
-          <div class="price-row__info"><h4>4 ședințe</h4><p>Pachet lunar lejer</p></div>
-          <div class="price-row__amount">400 RON</div>
+        <div class="seg-panel active" id="pil-grup" role="tabpanel">
+          <div class="price-row">
+            <div class="price-row__info"><h4>1 ședință</h4><p>Ședință Pilates</p></div>
+            <div class="price-row__amount">150 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>4 ședințe</h4><p>Pachet lunar lejer</p></div>
+            <div class="price-row__amount">400 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>8 ședințe</h4><p>Cel mai popular pachet</p></div>
+            <div class="price-row__amount">680 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>12 ședințe</h4><p>Pentru rezultate constante</p></div>
+            <div class="price-row__amount">800 RON</div>
+          </div>
         </div>
-        <div class="price-row">
-          <div class="price-row__info"><h4>8 ședințe</h4><p>Cel mai popular pachet</p></div>
-          <div class="price-row__amount">680 RON</div>
-        </div>
-        <div class="price-row">
-          <div class="price-row__info"><h4>12 ședințe</h4><p>Pentru rezultate constante</p></div>
-          <div class="price-row__amount">800 RON</div>
+        <div class="seg-panel" id="pil-privat" role="tabpanel" hidden>
+          <div class="price-row">
+            <div class="price-row__info"><h4>1 ședință 1:1</h4><p>190 lei / ședință</p></div>
+            <div class="price-row__amount">190 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>4 ședințe 1:1</h4><p>180 lei / ședință</p></div>
+            <div class="price-row__amount">720 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>8 ședințe 1:1</h4><p>170 lei / ședință</p></div>
+            <div class="price-row__amount">1.360 RON</div>
+          </div>
+          <div class="price-row">
+            <div class="price-row__info"><h4>12 ședințe 1:1</h4><p>168,33 lei / ședință</p></div>
+            <div class="price-row__amount">2.020 RON</div>
+          </div>
+          <p class="seg-note">Atenție completă. Rezultate vizibile.</p>
         </div>
         <span class="price-free"><i class="fa fa-gift"></i> Prima ședință gratuită</span>
+      </div>
+    </div>
+
+    <!-- Combo packages -->
+    <div class="center reveal" style="max-width:680px;margin:64px auto 30px">
+      <span class="eyebrow">Fitness + Pilates</span>
+      <h3 class="combo-title">Alege pachetul care ți se potrivește!</h3>
+    </div>
+    <div class="grid combo__grid">
+      <div class="combo-card reveal">
+        <span class="combo-card__label">Abonament</span>
+        <h3>Balance</h3>
+        <div class="combo-card__icons"><img src="images/icon-fitness.png" alt="Fitness"><span>+</span><img src="images/icon-pilates.png" alt="Pilates"></div>
+        <ul>
+          <li><strong>8</strong> ședințe fitness</li>
+          <li class="plus">+</li>
+          <li><strong>4</strong> ședințe Pilates</li>
+        </ul>
+        <div class="combo-card__price price-row__amount">699 RON</div>
+      </div>
+      <div class="combo-card combo-card--top reveal d1">
+        <span class="combo-card__label">Abonament</span>
+        <h3>Complete</h3>
+        <div class="combo-card__icons"><img src="images/icon-fitness.png" alt="Fitness"><span>+</span><img src="images/icon-pilates.png" alt="Pilates"></div>
+        <ul>
+          <li><strong>8</strong> ședințe fitness</li>
+          <li class="plus">+</li>
+          <li><strong>8</strong> ședințe Pilates</li>
+        </ul>
+        <div class="combo-card__price price-row__amount">950 RON</div>
       </div>
     </div>
     <p class="price-note">Prețurile pot suferi modificări. Contactează-ne pentru detalii și disponibilitate.</p>
   </div>
 </section>
-
 <!-- ===================== ORAR ===================== -->
 <section class="section orar" id="orar">
   <div class="container">
@@ -457,6 +516,6 @@
   });
 })();
 </script>
-<script src="js/enhance.js?v=2" defer></script>
+<script src="js/enhance.js?v=3" defer></script>
 </body>
 </html>

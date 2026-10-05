@@ -759,3 +759,57 @@ html { scrollbar-color: var(--black-4) var(--black); }
   .reveal .media-duo img, .reveal.about__media img { clip-path: none; }
 }
 .coach__role { z-index: 2; }
+
+/* ---- Pricing v3: icons, NOU tag, Pilates tabs, combo packages ---- */
+.price-card__icon img { width: 34px; height: 34px; object-fit: contain; }
+.price-row__info p i { margin-right: 4px; opacity: .8; }
+.tag-new {
+  display: inline-block; vertical-align: middle; margin-left: 6px;
+  font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; font-weight: 800;
+  background: var(--yellow); color: #1a1500; padding: 3px 9px; border-radius: 999px;
+  animation: pulse-tag 2.4s ease-in-out infinite;
+}
+@keyframes pulse-tag { 50% { box-shadow: 0 0 0 6px rgba(246,198,24,0); transform: scale(1.06); } 0%,100% { box-shadow: 0 0 0 0 rgba(246,198,24,.45); } }
+.price-row--new::before { opacity: 1; background: rgba(246,198,24,.06); }
+
+.seg { position: relative; display: grid; grid-template-columns: 1fr 1fr; background: var(--black-4); border-radius: 999px; padding: 4px; margin: 0 0 10px; }
+.seg__btn {
+  position: relative; z-index: 1; border: 0; background: none; cursor: pointer;
+  font-family: var(--font-head); font-weight: 700; font-size: .85rem; letter-spacing: .04em;
+  color: var(--muted); padding: 10px 12px; border-radius: 999px; transition: color .25s ease;
+}
+.seg__btn.active { color: #3a0026; }
+.seg__thumb {
+  position: absolute; top: 4px; bottom: 4px; left: 4px; width: calc(50% - 4px);
+  background: var(--pink); border-radius: 999px; transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+.seg.is-right .seg__thumb { transform: translateX(100%); }
+.seg-panel { animation: panel-in .4s ease; }
+@keyframes panel-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.seg-note { margin: 10px 0 0; color: var(--pink); font-family: var(--font-head); font-weight: 700; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; }
+
+.combo-title { font-size: clamp(1.4rem, 3vw, 2rem); margin: 0; }
+.combo__grid { grid-template-columns: repeat(2, minmax(0, 380px)); justify-content: center; gap: 28px; }
+.combo-card {
+  position: relative; text-align: center; padding: 34px 28px 30px; border-radius: var(--radius);
+  background: linear-gradient(160deg, rgba(246,198,24,.07), rgba(255,158,214,.09)), var(--black-3);
+  border: 1px solid var(--line); overflow: hidden; isolation: isolate;
+  transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+.combo-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 5px; background: linear-gradient(90deg, var(--yellow), var(--pink)); }
+.combo-card:hover { transform: translateY(-6px); border-color: rgba(255,158,214,.4); box-shadow: 0 24px 60px rgba(255,158,214,.1); }
+.combo-card__label { display: block; color: var(--muted); font-size: .9rem; }
+.combo-card h3 { font-size: 1.8rem; letter-spacing: .06em; text-transform: uppercase; margin: 2px 0 16px; color: var(--pink); }
+.combo-card__icons { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
+.combo-card__icons img { height: 52px; width: auto; transition: transform .35s ease; }
+.combo-card:hover .combo-card__icons img:first-child { transform: rotate(-8deg) scale(1.08); }
+.combo-card:hover .combo-card__icons img:last-child { transform: rotate(8deg) scale(1.08); }
+.combo-card__icons span, .combo-card li.plus { color: var(--yellow); font-weight: 800; font-size: 1.3rem; }
+.combo-card ul { list-style: none; padding: 0; margin: 0 0 20px; font-family: var(--font-head); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; font-size: .9rem; }
+.combo-card li strong { font-size: 1.3rem; color: var(--yellow); margin-right: 4px; }
+.combo-card li.plus { line-height: 1.2; }
+.combo-card__price { display: inline-block; font-size: 2rem; color: var(--text); border-top: 1px solid var(--line); padding-top: 14px; min-width: 60%; }
+.combo-card--top::after {
+  content: "★"; position: absolute; top: 14px; right: 16px; color: var(--yellow); font-size: 1.1rem;
+}
+@media (max-width: 720px) { .combo__grid { grid-template-columns: 1fr; } }

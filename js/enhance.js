@@ -153,6 +153,14 @@
     amounts.forEach(function (a) { cio.observe(a); });
   }
 
+  /* ---------- Preselect service when a button says which one ---------- */
+  document.querySelectorAll('[data-service]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var sel = document.getElementById('bService');
+      if (sel) sel.value = b.dataset.service === 'Masaj' ? 'Masaj & Relaxare' : b.dataset.service;
+    });
+  });
+
   /* ---------- Pilates tabs: Grup / Privat 1:1 ---------- */
   document.querySelectorAll('.seg').forEach(function (seg) {
     var btns = seg.querySelectorAll('.seg__btn');
@@ -176,7 +184,7 @@
   document.body.appendChild(lb);
   var lbImg = lb.querySelector('img');
   function closeLb() { lb.classList.remove('open'); document.body.style.overflow = ''; }
-  document.querySelectorAll('.about__media img, .media-duo img, .coach__photo img').forEach(function (img) {
+  document.querySelectorAll('.about__media img, .media-duo img, .massage-media img, .coach__photo img').forEach(function (img) {
     img.classList.add('zoomable');
     img.addEventListener('click', function () {
       lbImg.src = img.currentSrc || img.src;

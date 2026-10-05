@@ -41,6 +41,45 @@
   stack.appendChild(waBtn);
   document.body.appendChild(stack);
 
+  /* ---------- WhatsApp: choose who to talk to ---------- */
+  var WA_PEOPLE = [
+    ['fitness', 'Fitness', 'Sergiu', '40754696058', '0754 696 058', 'Salut! Aș vrea să programez o ședință de fitness.'],
+    ['pilates', 'Pilates Reformer', 'Henrietta', '40752939912', '0752 939 912', 'Salut! Aș vrea să programez o ședință de Pilates Reformer.'],
+    ['masaj', 'Masaj & Relaxare', 'Anca', '40748153343', '0748 153 343', 'Salut! Aș vrea să programez o ședință de masaj.']
+  ];
+  var wa = el('div', 'wa-pick');
+  wa.setAttribute('role', 'dialog');
+  wa.setAttribute('aria-modal', 'true');
+  wa.setAttribute('aria-labelledby', 'waPickTitle');
+  var waCard = el('div', 'wa-pick__card',
+    '<button class="wa-pick__close" type="button" aria-label="Închide">&times;</button>' +
+    '<div class="wa-pick__head"><i class="fa fa-whatsapp"></i><div><h3 id="waPickTitle">Cu cine vrei să vorbești?</h3>' +
+    '<p>Alege serviciul și scrie-ne direct pe WhatsApp.</p></div></div>');
+  WA_PEOPLE.forEach(function (p) {
+    var a = el('a', 'wa-pick__opt wa-pick__opt--' + p[0],
+      '<span class="wa-pick__dot"></span><span class="wa-pick__txt"><strong>' + p[1] + '</strong><small>' + p[2] + ' · ' + p[4] + '</small></span><i class="fa fa-chevron-right"></i>');
+    a.href = 'https://wa.me/' + p[3] + '?text=' + encodeURIComponent(p[5]);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    waCard.appendChild(a);
+  });
+  wa.appendChild(waCard);
+  document.body.appendChild(wa);
+  var closeWa = function () { wa.classList.remove('open'); document.body.style.overflow = ''; };
+  wa.addEventListener('click', function (e) {
+    if (e.target === wa || e.target.closest('.wa-pick__close') || e.target.closest('.wa-pick__opt')) closeWa();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && wa.classList.contains('open')) closeWa(); });
+  // generic WhatsApp buttons open the picker; per-section buttons still go straight to that person
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="wa.me/"]');
+    if (!a || a.closest('.book-line') || a.closest('.wa-pick')) return;
+    e.preventDefault();
+    wa.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    setTimeout(function () { waCard.querySelector('.wa-pick__opt').focus(); }, 50);
+  });
+
   /* ---------- Scroll handler (rAF-throttled) ---------- */
   var lastY = window.scrollY, ticking = false;
   function onScroll() {

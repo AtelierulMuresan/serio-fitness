@@ -157,12 +157,83 @@
   document.querySelectorAll('[data-service]').forEach(function (b) {
     b.addEventListener('click', function () {
       var sel = document.getElementById('bService');
-      if (sel) sel.value = b.dataset.service === 'Masaj' ? 'Masaj & Relaxare' : b.dataset.service;
+      if (sel) sel.value = b.dataset.service;
     });
   });
 
+  /* ---------- Massage prices: dropdown + Ședință / Abonament ---------- */
+  // [durată, detalii, preț]
+  var MASAJ = {
+    'Masaj clasic': {
+      single: [['30 min / ședință', 'Toate grupele musculare din zona spatelui și zona cervicală', 80],
+               ['60 min / ședință', 'Tot corpul', 120]],
+      sub:    [['30 min × 5 ședințe / lună', '', 320],
+               ['60 min × 5 ședințe / lună', '', 480]]
+    },
+    'Masaj reflexoterapeutic': {
+      single: [['30 min / ședință', 'Masaj de relaxare în talpă, trecând prin toate punctele reflexogene', 70],
+               ['45 min / ședință', 'Schemă de masaj pentru afecțiuni: rinichi, prostată, glande, cardiovasculare, digestive, biliare, genitale, pulmonare', 100]],
+      sub:    [['30 min × 4 ședințe / lună', '', 220],
+               ['45 min × 4 ședințe / lună', '', 320]]
+    },
+    'Drenaj limfatic': {
+      single: [['40 min / ședință', 'Zonă cap, gât, față', 70],
+               ['50 min / ședință', 'Brațe + piept + abdomen + picioare', 80],
+               ['90 min / ședință', 'Tot corpul', 130]],
+      sub:    [['40 min × 4 ședințe / lună', 'Zonă cap, gât, față', 230],
+               ['50 min × 4 ședințe / lună', 'Brațe + piept + abdomen + picioare', 280],
+               ['90 min × 4 ședințe / lună', 'Tot corpul', 420]]
+    },
+    'Masaj terapeutic': {
+      single: [['30 min / ședință', 'Masajul spatelui, membrelor inferioare, superioare și gâtului', 130],
+               ['30 min / ședință', 'Pentru picioare umflate', 80]],
+      sub:    [['30 min × 5 ședințe / lună', 'Masajul spatelui, membrelor inferioare, superioare și zona cervicală', 520],
+               ['30 min × 5 ședințe / lună', 'Pentru picioare umflate', 370]]
+    },
+    'Masaj deep tissue': {
+      single: [['30 min / ședință', '', 100]],
+      sub:    [['30 min × 5 ședințe / lună', '', 400]]
+    },
+    'Masaj anticelulitic': {
+      single: [['30–40 min / ședință', 'Picioare / fese', 120]],
+      sub:    [['30–40 min × 10 ședințe', 'Picioare / fese', 900]]
+    }
+  };
+  var mType = document.getElementById('massageType');
+  var mRows = document.getElementById('massageRows');
+  if (mType && mRows) {
+    var mMode = 'single';
+    Object.keys(MASAJ).forEach(function (k) { mType.add(new Option(k, k)); });
+    var renderMasaj = function () {
+      mRows.innerHTML = '';
+      MASAJ[mType.value][mMode].forEach(function (r) {
+        var row = el('div', 'price-row');
+        var info = el('div', 'price-row__info');
+        var h = el('h4'); h.textContent = r[0]; info.appendChild(h);
+        if (r[1]) { var d = el('p'); d.textContent = r[1]; info.appendChild(d); }
+        var amt = el('div', 'price-row__amount'); amt.textContent = r[2] + ' RON';
+        row.appendChild(info); row.appendChild(amt);
+        mRows.appendChild(row);
+        countUp(amt);
+      });
+      mRows.classList.remove('swap'); void mRows.offsetWidth; mRows.classList.add('swap');
+    };
+    mType.addEventListener('change', renderMasaj);
+    var mSeg = document.querySelector('.massage-prices .seg');
+    var mBtns = mSeg.querySelectorAll('.seg__btn');
+    mBtns.forEach(function (btn, i) {
+      btn.addEventListener('click', function () {
+        mMode = btn.dataset.mode;
+        mSeg.classList.toggle('is-right', i === 1);
+        mBtns.forEach(function (b) { b.classList.toggle('active', b === btn); b.setAttribute('aria-selected', b === btn); });
+        renderMasaj();
+      });
+    });
+    renderMasaj();
+  }
+
   /* ---------- Pilates tabs: Grup / Privat 1:1 ---------- */
-  document.querySelectorAll('.seg').forEach(function (seg) {
+  document.querySelectorAll('.seg:not(.seg--sand)').forEach(function (seg) {
     var btns = seg.querySelectorAll('.seg__btn');
     btns.forEach(function (btn, i) {
       btn.addEventListener('click', function () {

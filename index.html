@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" href="images/SimbolInchis.png">
   <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
@@ -74,6 +74,11 @@
         <h3>Postură, mobilitate &amp; control</h3>
         <p>Pilates Reformer pentru stabilitate, aliniere și echilibru între corp și minte.</p>
       </a>
+      <a href="#masaj" class="pillar pillar--masaj reveal d2">
+        <span class="pillar__tag">Masaj &amp; Relaxare</span>
+        <h3>Recuperare &amp; stare de bine</h3>
+        <p>Masaj de relaxare și terapeutic, completarea perfectă pentru Pilates Reformer și fitness.</p>
+      </a>
     </div>
   </div>
 </section>
@@ -125,7 +130,14 @@
           <li><i class="fa fa-check"></i> <span>Plan de nutriție personalizat la cerere, pentru rezultate sustenabile.</span></li>
         </ul>
         <div style="margin-top:28px">
-          <button class="btn" type="button" data-open-modal><i class="fa fa-star"></i> Prima ședință gratuită</button>
+          <button class="btn" type="button" data-open-modal data-service="Fitness"><i class="fa fa-star"></i> Prima ședință gratuită</button>
+        </div>
+        <div class="book-line book-line--fitness">
+          <span class="book-line__who"><i class="fa fa-calendar-check-o"></i> Programări fitness: <strong>Sergiu</strong></span>
+          <div class="book-line__actions">
+            <a class="btn btn--ghost" href="tel:+40754696058"><i class="fa fa-phone"></i> 0754 696 058</a>
+            <a class="btn btn--wa" href="https://wa.me/40754696058?text=Salut%21%20A%C8%99%20vrea%20s%C4%83%20programez%20o%20%C8%99edin%C8%9B%C4%83%20de%20fitness." target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
@@ -155,7 +167,14 @@
           <li><i class="fa fa-leaf"></i> <span>Beneficii pentru <strong>postură, mobilitate, tonifiere</strong> și echilibru corp–minte.</span></li>
         </ul>
         <div style="margin-top:28px">
-          <button class="btn btn--pink" type="button" data-open-modal><i class="fa fa-star"></i> Rezervă o ședință de Pilates</button>
+          <button class="btn btn--pink" type="button" data-open-modal data-service="Pilates Reformer – grup"><i class="fa fa-star"></i> Rezervă o ședință de Pilates</button>
+        </div>
+        <div class="book-line book-line--pilates">
+          <span class="book-line__who"><i class="fa fa-calendar-check-o"></i> Programări Pilates: <strong>Henrietta</strong></span>
+          <div class="book-line__actions">
+            <a class="btn btn--ghost" href="tel:+40752939912"><i class="fa fa-phone"></i> 0752 939 912</a>
+            <a class="btn btn--wa" href="https://wa.me/40752939912?text=Salut%21%20A%C8%99%20vrea%20s%C4%83%20programez%20o%20%C8%99edin%C8%9B%C4%83%20de%20Pilates%20Reformer." target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
@@ -184,7 +203,14 @@
           <span class="chip sand"><i class="fa fa-heart"></i> Stare de bine</span>
         </div>
         <div style="margin-top:28px">
-          <button class="btn btn--sand" type="button" data-open-modal data-service="Masaj"><i class="fa fa-star"></i> Programează un masaj</button>
+          <button class="btn btn--sand" type="button" data-open-modal data-service="Masaj &amp; Relaxare"><i class="fa fa-star"></i> Programează un masaj</button>
+        </div>
+        <div class="book-line book-line--masaj">
+          <span class="book-line__who"><i class="fa fa-calendar-check-o"></i> Programări masaj: <strong>Anca</strong></span>
+          <div class="book-line__actions">
+            <a class="btn btn--ghost" href="tel:+40748153343"><i class="fa fa-phone"></i> 0748 153 343</a>
+            <a class="btn btn--wa" href="https://wa.me/40748153343?text=Salut%21%20A%C8%99%20vrea%20s%C4%83%20programez%20o%20%C8%99edin%C8%9B%C4%83%20de%20masaj." target="_blank" rel="noopener"><i class="fa fa-whatsapp"></i> WhatsApp</a>
+          </div>
         </div>
       </div>
     </div>
@@ -334,6 +360,28 @@
       </div>
     </div>
 
+    <!-- Massage prices -->
+    <div class="price-card price-card--masaj massage-prices reveal">
+      <div class="price-card__head">
+        <span class="price-card__icon"><i class="fa fa-leaf"></i></span>
+        <h3>Masaj &amp; Relaxare</h3>
+      </div>
+      <p class="price-card__sub">Alege tipul de masaj pentru a vedea durata și prețul.</p>
+      <div class="massage-controls">
+        <label class="select-wrap">
+          <span class="sr-only">Tip masaj</span>
+          <select id="massageType" aria-label="Tip masaj"></select>
+          <i class="fa fa-chevron-down" aria-hidden="true"></i>
+        </label>
+        <div class="seg seg--sand" role="tablist" aria-label="Ședință sau abonament">
+          <button class="seg__btn active" type="button" role="tab" aria-selected="true" data-mode="single">Ședință</button>
+          <button class="seg__btn" type="button" role="tab" aria-selected="false" data-mode="sub">Abonament</button>
+          <span class="seg__thumb" aria-hidden="true"></span>
+        </div>
+      </div>
+      <div id="massageRows" aria-live="polite"></div>
+    </div>
+
     <!-- Combo packages -->
     <div class="center reveal" style="max-width:680px;margin:64px auto 30px">
       <span class="eyebrow">Fitness + Pilates</span>
@@ -420,6 +468,14 @@
         <div class="info-block">
           <h4>Telefon &amp; WhatsApp</h4>
           <p><a href="tel:+40754696058">0754 696 058</a> · <a href="tel:+40743949094">0743 949 094</a></p>
+        </div>
+        <div class="info-block">
+          <h4>Programări</h4>
+          <ul class="contact-list">
+            <li><span class="dot-y"></span> Fitness – Sergiu: <a href="tel:+40754696058">0754 696 058</a></li>
+            <li><span class="dot-p"></span> Pilates Reformer – Henrietta: <a href="tel:+40752939912">0752 939 912</a></li>
+            <li><span class="dot-s"></span> Masaj – Anca: <a href="tel:+40748153343">0748 153 343</a></li>
+          </ul>
         </div>
         <div class="info-block">
           <h4>Email</h4>
@@ -531,17 +587,20 @@
     var phone = document.getElementById('bPhone').value.trim();
     var service = document.getElementById('bService').value;
     var msg = document.getElementById('bMsg').value.trim();
-    var text = 'Salut! Aș vrea să rezerv prima ședință gratuită.\n'
+    var isMasaj = service.indexOf('Masaj') === 0;
+    var isPilates = service.indexOf('Pilates') === 0;
+    var to = isMasaj ? '40748153343' : isPilates ? '40752939912' : '40754696058';
+    var text = (isMasaj ? 'Salut! Aș vrea să programez o ședință de masaj.\n' : 'Salut! Aș vrea să rezerv prima ședință gratuită.\n')
       + 'Nume: ' + name + '\n'
       + 'Telefon: ' + phone + '\n'
       + 'Mă interesează: ' + service
       + (msg ? '\nMesaj: ' + msg : '');
-    window.open('https://wa.me/40754696058?text=' + encodeURIComponent(text), '_blank');
+    window.open('https://wa.me/' + to + '?text=' + encodeURIComponent(text), '_blank');
     closeModal();
     this.reset();
   });
 })();
 </script>
-<script src="js/enhance.js?v=4" defer></script>
+<script src="js/enhance.js?v=5" defer></script>
 </body>
 </html>

@@ -840,3 +840,57 @@ html { scrollbar-color: var(--black-4) var(--black); }
   .nav__links a { font-size: .74rem; letter-spacing: .08em; }
   .nav__cta .btn { padding: 12px 18px; font-size: .88rem; }
 }
+
+/* ---- v5: massage pillar, booking lines, massage prices ---- */
+.pillars__grid { grid-template-columns: repeat(3, 1fr); }
+.pillar { padding: 34px 30px; }
+.pillar--masaj::before { background-image: url("../images/masaj.jpg"); }
+.pillar--masaj::after { background: linear-gradient(180deg, rgba(12,12,13,.30) 0%, rgba(20,15,8,.92) 100%); border-bottom: 4px solid var(--sand); }
+.pillar--masaj .pillar__tag { color: var(--sand); }
+.pillar--masaj { --glow-c: rgba(230,201,162,.16); }
+@media (max-width: 992px) { .pillars__grid { grid-template-columns: 1fr; } }
+
+.book-line {
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;
+  margin-top: 22px; padding: 14px 16px 14px 20px; border-radius: 14px;
+  background: var(--black-3); border: 1px solid var(--line); border-left: 4px solid var(--yellow);
+}
+.book-line--pilates { border-left-color: var(--pink); }
+.book-line--masaj { border-left-color: var(--sand); }
+.book-line__who { color: var(--muted); font-size: .95rem; }
+.book-line__who i { margin-right: 6px; color: var(--yellow); }
+.book-line--pilates .book-line__who i { color: var(--pink); }
+.book-line--masaj .book-line__who i { color: var(--sand); }
+.book-line__who strong { color: var(--text); }
+.book-line__actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.book-line .btn { padding: 10px 18px; font-size: .88rem; }
+@media (max-width: 640px) { .book-line__actions, .book-line__actions .btn { width: 100%; justify-content: center; } }
+
+.contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.contact-list a:hover { color: var(--yellow); }
+.contact-list span { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 6px; vertical-align: middle; }
+.dot-y { background: var(--yellow); } .dot-p { background: var(--pink); } .dot-s { background: var(--sand); }
+
+.massage-prices { max-width: 760px; margin: 28px auto 0; }
+.price-card--masaj::before { background: var(--sand); }
+.price-card--masaj .price-card__icon { background: rgba(230,201,162,.14); color: var(--sand); }
+.price-card--masaj .price-row__amount { color: var(--sand); }
+.price-card--masaj { --glow-c: rgba(230,201,162,.14); }
+.price-card--masaj:hover { border-color: rgba(230,201,162,.4); box-shadow: 0 24px 60px rgba(230,201,162,.08); }
+.massage-controls { display: grid; grid-template-columns: 1.4fr 1fr; gap: 12px; margin-bottom: 8px; }
+.select-wrap { position: relative; display: block; }
+.select-wrap select {
+  width: 100%; appearance: none; -webkit-appearance: none; cursor: pointer;
+  background: var(--black-4); color: var(--text); border: 1px solid var(--line); border-radius: 999px;
+  padding: 12px 44px 12px 20px; font-family: var(--font-head); font-weight: 700; font-size: .92rem;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.select-wrap select:hover, .select-wrap select:focus { outline: none; border-color: var(--sand); box-shadow: 0 0 0 4px rgba(230,201,162,.15); }
+.select-wrap i { position: absolute; right: 18px; top: 50%; transform: translateY(-50%); color: var(--sand); pointer-events: none; font-size: .8rem; }
+.seg--sand { margin: 0; }
+.seg--sand .seg__thumb { background: var(--sand); }
+.seg--sand .seg__btn.active { color: #2a1c0b; }
+#massageRows.swap { animation: panel-in .4s ease; }
+#massageRows .price-row:last-child { border-bottom: 0; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 640px) { .massage-controls { grid-template-columns: 1fr; } }
